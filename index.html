@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Mesh controller</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Data loading scripts -->
+        <script type="text/javascript" src="script.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <h1 id="navbar-heading">Mesh control</h1>
+
+        <div class="container">
+            <div id="col-1" class="col">
+                <h3>Connected devices: <span id="connected-devices"></span></h3>
+                <div id="device-info">
+                    <ul id="device-list"></ul>
+                </div>
+            </div>
+
+            <div id="col-2" class="col">
+                <form action="http://192.168.3.1/single">
+                    <h3>Sending message</h3>
+
+                    <h4>Type of message:</h4>
+                    <form action="/action_page.php">
+                        <label for="cars">Type:
+                        </label>
+                        <select id="cars" name="cars" aria-placeholder="select">
+                            <option disabled selected value="">Please select message type</option>
+                            <option value="status">Status update</option>
+                            <option value="update">Update</option>
+                            <option value="info">Info</option>
+                        </select>
+                        <br/>
+                    </form>
+                    <br/>
+                    <h3>Custom mesh message:</h3>
+                    <input type="text" name="SINGLEMESSAGE" placeholder="Message to send"/>
+                    <br/>
+                </form>
+            </div>
+
+            <br/>
+            <br/>
+            <br/>
+            <input id="send-button" class="send" type="submit" value="Send"/>
+            <br/>
+            <br/>
+
+            <div id="col-3" class="col long">
+                <h3>
+                    Response: 
+                </h3>
+                <div id="terminal-window">
+                    <p id="terminal-start" class="terminal-message">
+                        /var/Mesh controller:~$  <span id="terminal-ending">_</span> 
+                    </p>
+                </div>
+            </div>
+        </div>
+        <menu id="context-menu">
+            <menu title="Select" onclick="Select()"></menu>
+            <menu title="Select all" onclick="SelectAll()"></menu> 
+            <menu title="Rename" onclick="RenameSelected()"></menu>
+            <menu title="Reset name" onclick="ResetName()"></menu>
+            <menu title="Refresh" onclick="Refresh()"></menu>
+        </menu>
+    </body>
+</html>
