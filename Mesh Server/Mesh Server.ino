@@ -132,7 +132,14 @@ void setup() {
   node_count = nodes.size();
 
   if(node_count == 0)
-    only_device = true;
+  {
+    device_server = !device_server;
+    only_device = !only_device;
+  }
+  else (
+    //Send broadcast to check for existing server
+    
+  )
 
   // Trying the ACCESS POINT
   // =======================
@@ -151,7 +158,7 @@ void setup() {
   Serial.print("AP IP address: ");
   Serial.println(myIP);
 
-  if(only_device) {
+  if(device_server) {
     device_server = !device_server;
     server.onNotFound([](){
       server.send(404, "text/plain", "<h1>404: Not found</h1>");
